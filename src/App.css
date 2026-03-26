@@ -1,0 +1,236 @@
+/* src/App.css */
+
+/* --- Variables Globales --- */
+:root {
+  --primary: #2563eb; /* Bleu moderne */
+  --primary-hover: #1d4ed8;
+  --bg-main: #f8fafc; /* Gris très clair */
+  --bg-input: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-input: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* --- Base & Reset --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Empêche le scroll global */
+  display: block !important; /* Force l'affichage non-centré */
+}
+
+/* --- Layout Principal --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --- Header --- */
+header {
+  height: 70px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Structure Côte-à-Côte --- */
+main {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* Nécessaire pour le scroll interne */
+}
+
+/* --- Colonne de Gauche (Éditeur) --- */
+.editor-section {
+  flex: 1;
+  max-width: 50%;
+  padding: 2.5rem;
+  background: white;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+/* --- Colonne de Droite (Prévisualisation) --- */
+.preview-section {
+  flex: 1;
+  max-width: 50%;
+  padding: 2.5rem;
+  background-color: var(--bg-main);
+  overflow-y: auto;
+}
+
+/* --- Titres de Section --- */
+.section-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.section-header p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* --- Formulaire --- */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: var(--bg-input);
+  box-shadow: var(--shadow-input);
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Grid pour Pseudo/Repo et Auteur/Licence */
+.row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* --- Boutons --- */
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-outline {
+  background-color: white;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-main);
+  border-color: #cbd5e1;
+}
+
+/* --- Le Rendu Markdown --- */
+.markdown-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  min-height: 100%;
+}
+
+/* Styles pour le texte Markdown brut */
+.markdown-card h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.markdown-card p {
+  margin-bottom: 1.25rem;
+}
+
+.markdown-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-card pre {
+  background: #f1f5f9;
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.markdown-card code {
+  font-family: monospace;
+}
+
+.btn-danger {
+  background-color: transparent;
+  color: #ef4444; /* Rouge */
+  border: 1px solid #fee2e2;
+}
+
+.btn-danger:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+}
